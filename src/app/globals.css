@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  /* Red Accent Spectrum */
+  --red-950: #1a0505;
+  --red-900: #4c0d0d;
+  --red-800: #7f1d1d;
+  --red-600: #dc2626;
+  --red-500: #ef4444;
+  --red-400: #f87171;
+  
+  /* Fluid Typography */
+  --text-xs: clamp(0.75rem, 0.5vw + 0.65rem, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.75vw + 0.75rem, 1rem);
+  --text-base: clamp(1rem, 1vw + 0.85rem, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.5vw + 0.9rem, 1.5rem);
+  --text-xl: clamp(1.5rem, 2vw + 1rem, 2rem);
+  --text-2xl: clamp(2rem, 3vw + 1.25rem, 3rem);
+}
+
+body {
+  background-color: #0a0a0a;
+  background-image: linear-gradient(135deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%);
+  background-attachment: fixed;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar with red accent */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4c0d0d, #7f1d1d);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #7f1d1d, #dc2626);
+}
+
+/* Utility classes */
+.text-gradient-red {
+  background: linear-gradient(90deg, #ffffff 0%, #f87171 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-red {
+  background: rgba(239, 68, 68, 0.03);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.08);
+}
+
+.glow-red {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3),
+              0 0 40px rgba(220, 38, 38, 0.15);
+}
+
+.glow-red-hover {
+  transition: box-shadow 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-red-hover:hover {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.4),
+              0 0 60px rgba(239, 68, 68, 0.2);
+}
+
+.soft-shadow {
+  box-shadow: 
+    20px 20px 60px rgba(0, 0, 0, 0.5),
+    -20px -20px 60px rgba(255, 255, 255, 0.02);
+}
+
+/* Animations */
+@keyframes shimmer-red {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton-red {
+  background: linear-gradient(
+    90deg,
+    rgba(26, 5, 5, 0.3) 0%,
+    rgba(127, 29, 29, 0.3) 50%,
+    rgba(26, 5, 5, 0.3) 100%
+  );
+  background-size: 2000px 100%;
+  animation: shimmer-red 2s infinite;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation: slideInFromBottom 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Micro-interaction utilities */
+.micro-hover {
+  transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.micro-hover:hover {
+  transform: scale(1.02);
+}
+
+.micro-hover:active {
+  transform: scale(0.98);
+}

@@ -36,6 +36,8 @@ export const usePDFStore = create<PDFState>((set) => ({
   }),
   
   setTotalPages: (total: number) => set({ totalPages: total }),
+
+  setZoom: (zoom: number) => set({ zoom }),
   
   resetPDF: () => set({
     isOpen: false,

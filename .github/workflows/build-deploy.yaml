@@ -37,9 +37,9 @@ jobs:
               with:
                 context: .
                 push: true
-                tags: ghcr.io/Mepo-Projects/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-                cache-from: type=registry,ref=ghcr.io/Mepo-Projects/${{ env.CONTAINER_NAME }}:buildcache
-                cache-to: type=registry,ref=ghcr.io/Mepo-Projects/${{ env.CONTAINER_NAME }}:buildcache,mode=max
+                tags: ghcr.io/mepo-projects/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+                cache-from: type=registry,ref=ghcr.io/mepo-projects/${{ env.CONTAINER_NAME }}:buildcache
+                cache-to: type=registry,ref=ghcr.io/mepo-projects/${{ env.CONTAINER_NAME }}:buildcache,mode=max
 
     deploy:
         needs: build
@@ -61,7 +61,7 @@ jobs:
                 ref: main
 
             - name: Change version
-              run: yq -i '.services.redefinance_frontend.image = "ghcr.io/Mepo-Projects/${{ env.CONTAINER_NAME }}:${{ github.sha }}"' server.yaml
+              run: yq -i '.services.redefinance_frontend.image = "ghcr.io/mepo-projects/${{ env.CONTAINER_NAME }}:${{ github.sha }}"' server.yaml
            
             - name: Commit and push changes
               run: |
